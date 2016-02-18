@@ -67,6 +67,8 @@ var RecorderController = function (element, service, recorderUtils, $scope, $tim
     var phase = $scope.$root.$$phase;
     if (phase !== '$apply' && phase !== '$digest') {
       return $scope.$apply(fn);
+    } else if (typeof fn === 'function') {
+      return fn();
     }
   };
 
