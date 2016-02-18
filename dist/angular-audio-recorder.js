@@ -294,17 +294,16 @@ var RecorderController = function (element, service, recorderUtils, $scope, $tim
       status.isRecording = false;
       var finalize = function (inputBlob) {
         control.audioModel = inputBlob;
+        control.onRecordComplete();
         embedPlayer(inputBlob);
       };
 
+      embedPlayer(null);
       if (shouldConvertToMp3) {
         doMp3Conversion(blob, finalize);
       } else {
-        finalize(blob)
+        finalize(blob);
       }
-
-      embedPlayer(null);
-      control.onRecordComplete();
     };
 
     //To stop recording
