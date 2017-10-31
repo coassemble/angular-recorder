@@ -358,7 +358,7 @@ var RecorderController = function (element, service, recorderUtils, $scope, $tim
       fileName = 'audio_recording_' + control.id + (control.audioModel.type.indexOf('mp3') > -1 ? 'mp3' : 'wav');
     }
 
-    var blobUrl = window.URL.createObjectURL(control.audioModel);
+    var blobUrl = (window.webkitURL || window.URL).createObjectURL(control.audioModel);
     var a = document.createElement('a');
     a.href = blobUrl;
     a.target = '_blank';

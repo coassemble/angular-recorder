@@ -32,7 +32,7 @@
       console.warn('Params must be an object that is serializable with JSON.stringify, specified is: ' + (typeof params));
     }
 
-    var blobURL = window.URL.createObjectURL(new Blob(['(', fnString, ')(this,', JSON.stringify(params), ')'], {type: 'application/javascript'}));
+    var blobURL = (window.webkitURL || window.URL).createObjectURL(new Blob(['(', fnString, ')(this,', JSON.stringify(params), ')'], {type: 'application/javascript'}));
 
     return blobURL;
   };
